@@ -6,10 +6,10 @@ Many docstrings in this file are based on PEP-249, which is in the public domain
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from builtins import bytes
-from builtins import int
 from builtins import object
 from builtins import range
 from builtins import str
+import numbers
 from past.builtins import basestring
 from pyhive import exc
 import abc
@@ -245,7 +245,7 @@ class ParamEscaper(object):
     def escape_item(self, item):
         if item is None:
             return 'NULL'
-        elif isinstance(item, (int, float)):
+        elif isinstance(item, numbers.Real):
             return self.escape_number(item)
         elif isinstance(item, basestring):
             return self.escape_string(item)
